@@ -73,6 +73,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/space" />
 
+        <CheckBox
+            android:id="@+id/checkUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fahrenheit"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toStartOf="@+id/btnWeather"
+            app:layout_constraintStart_toEndOf="@+id/btnMap" />
         <Button
             android:id="@+id/btnWeather"
             android:layout_width="wrap_content"

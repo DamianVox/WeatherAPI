@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     //model and bindings
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var viewModel: WeatherVM
+    private var unit: Boolean = false
+    private var unitVal: String = "C"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,16 @@ class MainActivity : AppCompatActivity() {
 
 
         viewBinding.btnWeather.setOnClickListener {
+
+            if (!viewBinding.checkUnit.isChecked){
+                unit = false
+                unitVal = "C"
+            }
+            else{
+                unit = true
+                unitVal = "F"
+            }
+
             viewModel = ViewModelProvider(this)[WeatherVM::class.java]
             //-25.909549, 28.147291 --- testing values without user inout
             viewModel.loadWeather(Lat,Long,DAILY_URL)
@@ -80,12 +92,22 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this,"Please Wait", Toast.LENGTH_SHORT).show()
         delay(2000)
         Log.d("output results", "start ${dateArray[0].toString()},${tMaxArray[0].toString()},${tMinArray[0].toString()},${tWeatherCodeArray[0].toString()},${tRainArray[0].toString()}")
-        //Today
-         viewBinding.txtTodayDate.text = dateArray[0]
-         viewBinding.txtTodayMax.text = tMaxArray[0]
-         viewBinding.txtTodayMin.text = tMinArray[0]
-         viewBinding.txtTodayWeatherCode.text = tWeatherCodeArray[0]
-         viewBinding.txtTodayRain.text = tRainArray[0]
+
+         if (unitVal =="C") {
+             //Today
+             viewBinding.txtTodayDate.text = "Today: " + dateArray[0]
+             viewBinding.txtTodayMax.text = "Max Temp: " + tMaxArray[0] + unitVal
+             viewBinding.txtTodayMin.text = "Min Temp: " + tMinArray[0] + unitVal
+             viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0]
+             viewBinding.txtTodayRain.text = "Rain : " + tRainArray[0]
+         } else {
+             viewBinding.txtTodayDate.text = "Today: " + dateArray[0]
+             viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[0].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[0].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0]
+             viewBinding.txtTodayRain.text = "Rain : " + tRainArray[0]
+
+         }
     }
 
 }
