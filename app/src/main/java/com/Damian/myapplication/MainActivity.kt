@@ -100,12 +100,61 @@ class MainActivity : AppCompatActivity() {
              viewBinding.txtTodayMin.text = "Min Temp: " + tMinArray[0] + unitVal
              viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0]
              viewBinding.txtTodayRain.text = "Rain : " + tRainArray[0]
+             //Day 2
+             viewBinding.txt2Date.text = "Day 2: " + dateArray[1]
+             viewBinding.txt2Max.text = "Max Temp: " + tMaxArray[1] + unitVal
+             viewBinding.txt2Min.text = "Min Temp: " + tMinArray[1] + unitVal
+             viewBinding.txt2WeatherCode.text = "Weather Code: " + tWeatherCodeArray[1]
+             viewBinding.txt2Rain.text = "Rain : " + tRainArray[1]
+             //Day 3
+             viewBinding.txt3Date.text = "Day 3: " + dateArray[2]
+             viewBinding.txt3Max.text = "Max Temp: " + tMaxArray[2] + unitVal
+             viewBinding.txt3Min.text = "Min Temp: " + tMinArray[2] + unitVal
+             viewBinding.txt3WeatherCode.text = "Weather Code: " + tWeatherCodeArray[2]
+             viewBinding.txt3Rain.text = "Rain : " + tRainArray[2]
+             //Day 4
+             viewBinding.txt4Date.text = "Day 4: " + dateArray[3]
+             viewBinding.txt4Max.text = "Max Temp: " + tMaxArray[3] + unitVal
+             viewBinding.txt4Min.text = "Min Temp: " + tMinArray[3] + unitVal
+             viewBinding.txt4WeatherCode.text = "Weather Code: " + tWeatherCodeArray[3]
+             viewBinding.txt4Rain.text = "Rain : " + tRainArray[3]
+             //Day 5
+             viewBinding.txt5Date.text = "Day 5: " + dateArray[4]
+             viewBinding.txt5Max.text = "Max Temp: " + tMaxArray[4] + unitVal
+             viewBinding.txt5Min.text = "Min Temp: " + tMinArray[4] + unitVal
+             viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4]
+             viewBinding.txt5Rain.text = "Rain : " + tRainArray[4]
          } else {
+             //Today
              viewBinding.txtTodayDate.text = "Today: " + dateArray[0]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[0].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[0].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0]
              viewBinding.txtTodayRain.text = "Rain : " + tRainArray[0]
+             //Day 2
+             viewBinding.txt2Date.text = "Day 2: " + dateArray[1]
+             viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[1].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[1].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txt2WeatherCode.text = "Weather Code: " + tWeatherCodeArray[1]
+             viewBinding.txt2Rain.text = "Rain : " + tRainArray[1]
+             //Day 3
+             viewBinding.txt3Date.text = "Day 3: " + dateArray[2]
+             viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[2].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[2].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txt3WeatherCode.text = "Weather Code: " + tWeatherCodeArray[2]
+             viewBinding.txt3Rain.text = "Rain : " + tRainArray[2]
+             //Day 4
+             viewBinding.txt4Date.text = "Day 4: " + dateArray[3]
+             viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[3].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[3].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txt4WeatherCode.text = "Weather Code: " + tWeatherCodeArray[3]
+             viewBinding.txt4Rain.text = "Rain : " + tRainArray[3]
+             //Day 5
+             viewBinding.txt5Date.text = "Day 5: " + dateArray[4]
+             viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[4].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[4].toDouble()*9/5)+32).toString() + unitVal
+             viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4]
+             viewBinding.txt5Rain.text = "Rain : " + tRainArray[4]
 
          }
     }
