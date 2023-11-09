@@ -1,10 +1,13 @@
 package com.Damian.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.Damian.myapplication.Utils.Constants.DAILY_URL
+import com.Damian.myapplication.Utils.Constants.Lat
+import com.Damian.myapplication.Utils.Constants.Long
 import com.Damian.myapplication.Utils.DataProcessor
 import com.Damian.myapplication.ViewModel.WeatherVM
 import com.Damian.myapplication.databinding.ActivityMainBinding
@@ -22,9 +25,17 @@ class MainActivity : AppCompatActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        viewBinding.editLat.setText(Lat.toString())
+        viewBinding.editLong.setText(Long.toString())
+
+        viewBinding.btnMap.setOnClickListener {
+            val intent = Intent(this, StartMapsActivity::class.java)
+            startActivity(intent)
+        }
+
         viewModel = ViewModelProvider(this)[WeatherVM::class.java]
 //-25.909549, 28.147291 --- testing values without user inout
-        viewModel.loadWeather(-25.909549,28.147291,DAILY_URL)
+        viewModel.loadWeather(Lat,Long,DAILY_URL)
 
         viewModel.weatherLive.observe(this, Observer{
             val dataProcessor = DataProcessor()

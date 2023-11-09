@@ -1,6 +1,7 @@
 package com.Damian.myapplication
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
@@ -52,7 +53,7 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_maps)
 
-   /*     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+    /*    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.ACCESS_FINE_LOCATION
@@ -65,12 +66,14 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
             buildGoogleApiClient()
             gMap!!.isMyLocationEnabled = true
         }*/
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.theMap) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     override fun onMapReady(map: GoogleMap) {
         gMap = map
 
-   /*     if (ContextCompat.checkSelfPermission(this,
+        if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             buildGoogleApiClient()
             gMap!!.isMyLocationEnabled = true
@@ -79,8 +82,19 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
             Log.d("OnMapReady", "Not enabled")
             buildGoogleApiClient()
             gMap!!.isMyLocationEnabled = true
-        }*/
+        }
     }
+
+    override fun onBackPressed() {
+        refreshContent()
+        super.onBackPressed()
+    }
+    private fun refreshContent() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 
     fun buildGoogleApiClient() {
         gGoogleApiClient = GoogleApiClient.Builder(this)
@@ -137,27 +151,40 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
     }
 
     fun searchLocation(view: View){
-        val locationFind:EditText = findViewById(R.id.editSearch)
-        var location: String
-        location = locationFind.text.toString().trim()
-        var addressList: List<Address>? = null
-        if (location == null || location == ""){
-            Toast.makeText(this,"location not provided", Toast.LENGTH_SHORT).show()
-        } else {
-            val geo = Geocoder(this)
-            try {
-                addressList = geo.getFromLocationName(location,1)
-            } catch (e: IOException){
-                e.printStackTrace()
-            }
+        try {
+            val locationFind: EditText = findViewById(R.id.editSearch)
+            var location: String = locationFind.text.toString().trim().capitalize()
+            var addressList: List<Address>? = null
+            if (location == null || location == "") {
+                Toast.makeText(this, "location not provided", Toast.LENGTH_SHORT).show()
+            } else {
+                val geo = Geocoder(this)
+                try {
+                    addressList = geo.getFromLocationName(location, 1)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+                if (addressList != null && addressList.isNotEmpty()) {
+                    val address = addressList!![0]
+                    val latLng = LatLng(address.latitude, address.longitude)
+                    Lat = address.latitude
+                    Long = address.longitude
+                    Log.d("Maps", "Marker Locations Lat=$Lat & Long=$Long")
+                    gMap!!.addMarker(MarkerOptions().position(latLng))
+                    gMap!!.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+                    Toast.makeText(this, "Address found, Press Back", Toast.LENGTH_LONG).show()
 
-            val address = addressList!![0]
-            val latLng = LatLng(address.latitude,address.longitude)
-            Lat = address.latitude
-            Long = address.longitude
-            Log.d("Maps", "Marker Locations Lat=$Lat & Long=$Long")
-            gMap!!.addMarker(MarkerOptions().position(latLng))
-            gMap!!.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+                }else {
+                    Toast.makeText(this, "Invalid address", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Try adding the type of street {avenue/street/lane}", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, StartMapsActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        catch (e: IOException){
+            e.printStackTrace()
         }
     }
 }
