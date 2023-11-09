@@ -4,6 +4,7 @@ package com.Damian.myapplication.model
 
 import com.google.gson.annotations.SerializedName
 
+//Serialization required for field values to gather the information needed from the request
 data class Weather (
     val elevation: Long,
     @SerializedName("generationtime_ms")
