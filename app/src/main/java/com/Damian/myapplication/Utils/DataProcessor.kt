@@ -12,7 +12,9 @@ class DataProcessor {
         {
             dateArray = fieldList.toTypedArray()
             for (field in fieldList) {
-                Log.d("Output Day Time", "$Name=$field")
+                Log.d("                    val intent = Intent(this, StartMapsActivity::class.java)\n" +
+                        "                    startActivity(intent)\n" +
+                        "                    finish() Day Time", "$Name=$field")
             }
         }
         if (Name == "Max")
