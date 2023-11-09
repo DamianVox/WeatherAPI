@@ -22,6 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="#A9AEA7"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
@@ -29,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Select Location"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_default="percent"
@@ -80,7 +82,7 @@
             android:text="fahrenheit"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toStartOf="@+id/btnWeather"
-            app:layout_constraintStart_toEndOf="@+id/btnMap" />
+            app:layout_constraintStart_toEndOf="@+id/btnMap"/>
         <Button
             android:id="@+id/btnWeather"
             android:layout_width="wrap_content"
@@ -97,6 +99,8 @@
             app:layout_constraintTop_toBottomOf="@+id/btnMap" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="#D1E185"
+            android:layout_margin="10dp"
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -110,6 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Today:"
+                android:textStyle="bold"
                 android:textSize="40sp"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Max Temp:"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 app:layout_constraintTop_toBottomOf="@+id/txtTodayDate" />
@@ -130,6 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Min Temp:"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 app:layout_constraintTop_toBottomOf="@+id/txtTodayMax" />
@@ -139,6 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:textStyle="bold"
                 android:text="Weather Code:"
                 app:layout_constraintTop_toBottomOf="@+id/txtTodayMin" />
 
@@ -146,6 +154,7 @@
                 android:id="@+id/txtTodayRain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:text="Rain:"
                 app:layout_constraintTop_toBottomOf="@+id/txtTodayWeatherCode" />
@@ -156,26 +165,30 @@
             android:id="@+id/otherDaysLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="#A9AEA7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_margin="10dp"
                 android:id="@+id/day2layout"
                 android:layout_width="0dp"
+                android:background="@color/white"
                 android:layout_height="0dp"
                 app:layout_constraintHeight_default="percent"
-                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintHeight_percent=".45"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_default="percent"
-                app:layout_constraintWidth_percent=".5">
+                app:layout_constraintWidth_percent=".45">
 
                 <TextView
                     android:id="@+id/txt2Date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Day 2:"
+                    android:textStyle="bold"
                     android:textSize="30sp"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -187,6 +200,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Max Temp:"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt2Date" />
@@ -196,6 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Min Temp:"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt2Max" />
@@ -204,6 +219,7 @@
                     android:id="@+id/txt2WeatherCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:text="Weather Code:"
                     app:layout_constraintTop_toBottomOf="@+id/txt2Min" />
@@ -212,6 +228,7 @@
                     android:id="@+id/txt2Rain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:text="Rain:"
                     app:layout_constraintTop_toBottomOf="@+id/txt2WeatherCode" />
@@ -219,21 +236,25 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_margin="10dp"
                 android:id="@+id/day3layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:textStyle="bold"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_default="percent"
-                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintHeight_percent=".45"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_default="percent"
-                app:layout_constraintWidth_percent=".5">
+                app:layout_constraintWidth_percent=".45">
                 <TextView
                     android:id="@+id/txt3Date"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Day 3:"
                     android:textSize="30sp"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -245,6 +266,7 @@
                     android:layout_height="wrap_content"
                     android:text="Max Temp:"
                     android:textAlignment="center"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt3Date" />
 
@@ -253,6 +275,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Min Temp:"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt3Max" />
@@ -260,6 +283,7 @@
                 <TextView
                     android:id="@+id/txt3WeatherCode"
                     android:layout_width="match_parent"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="Weather Code:"
@@ -269,27 +293,31 @@
                     android:id="@+id/txt3Rain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:text="Rain:"
                     app:layout_constraintTop_toBottomOf="@+id/txt3WeatherCode" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_margin="10dp"
                 android:id="@+id/day4layout"
+                android:background="@color/white"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_default="percent"
-                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintHeight_percent=".45"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintWidth_default="percent"
-                app:layout_constraintWidth_percent=".5">
+                app:layout_constraintWidth_percent=".45">
                 <TextView
                     android:id="@+id/txt4Date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Day 4:"
                     android:textSize="30sp"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -300,6 +328,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Max Temp:"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt4Date" />
@@ -309,6 +338,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Min Temp:"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt4Max" />
@@ -319,6 +349,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="Weather Code:"
+                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/txt4Min" />
 
                 <TextView
@@ -327,24 +358,28 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="Rain:"
+                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/txt4WeatherCode" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_margin="10dp"
+                android:background="@color/white"
                 android:id="@+id/day5layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_default="percent"
-                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintHeight_percent=".45"
                 app:layout_constraintWidth_default="percent"
-                app:layout_constraintWidth_percent=".5">
+                app:layout_constraintWidth_percent=".45">
                 <TextView
                     android:id="@+id/txt5Date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Day 5:"
+                    android:textStyle="bold"
                     android:textSize="30sp"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -356,6 +391,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Max Temp:"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt5Date" />
@@ -366,6 +402,7 @@
                     android:layout_height="wrap_content"
                     android:text="Min Temp:"
                     android:textAlignment="center"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt5Max" />
 
@@ -375,6 +412,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="Weather Code:"
+                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/txt5Min" />
 
                 <TextView
@@ -383,6 +421,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="Rain:"
+                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/txt5WeatherCode" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
