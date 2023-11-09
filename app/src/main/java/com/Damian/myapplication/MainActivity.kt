@@ -1,10 +1,14 @@
 package com.Damian.myapplication
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.Damian.myapplication.Utils.Constants.DAILY_URL
@@ -33,6 +37,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) !==
+            PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            } else {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            }
+        }
 
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
@@ -124,7 +141,8 @@ class MainActivity : AppCompatActivity() {
              viewBinding.txt5Min.text = "Min Temp: " + tMinArray[4] + unitVal
              viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4]
              viewBinding.txt5Rain.text = "Rain : " + tRainArray[4]
-         } else {
+         }
+         else {
              //Today
              viewBinding.txtTodayDate.text = "Today: " + dateArray[0]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[0].toDouble()*9/5)+32).toString() + unitVal
