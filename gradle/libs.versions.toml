@@ -14,6 +14,7 @@ lifecycle-viewmodel-ktx = "2.7.0-beta01"
 logging-interceptor = "5.0.0-alpha.11"
 com-google-android-libraries-mapsplatform-secrets-gradle-plugin = "2.0.1"
 play-services-maps = "18.2.0"
+play-services-location = "21.0.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -28,6 +29,7 @@ converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ve
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-maps" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play-services-location" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

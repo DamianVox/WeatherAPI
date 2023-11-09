@@ -15,6 +15,9 @@ object Constants {
     var tMinArray:Array<String> = arrayOf()
     var rainArray:Array<String> = arrayOf()
 
+    //Maps
+    var MAPS_API_KEY="AIzaSyAgH6oo14wxkg5VrWGwwneetnIhmzPBm_U"
+
 
 
 }
