@@ -6,8 +6,8 @@ object Constants {
     const val DAILY_URL = "weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,rain_sum,showers_sum,snowfall_sum"
 
     // User Location
-    val Lat = null
-    val Long = null
+    var Lat:Double = 0.0
+    var Long:Double = 0.0
 
     // API Return Variables
     var dateArray:Array<String> = arrayOf()

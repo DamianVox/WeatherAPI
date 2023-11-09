@@ -52,5 +52,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    }
+
 }
