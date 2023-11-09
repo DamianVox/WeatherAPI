@@ -126,6 +126,22 @@
                 android:textSize="30sp"
                 app:layout_constraintTop_toBottomOf="@+id/txtTodayMax" />
 
+            <TextView
+                android:id="@+id/txtTodayWeatherCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Weather Code"
+                app:layout_constraintTop_toBottomOf="@+id/txtTodayMin" />
+
+            <TextView
+                android:id="@+id/txtTodayRain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Rain???"
+                app:layout_constraintTop_toBottomOf="@+id/txtTodayWeatherCode" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -190,4 +206,6 @@
 
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

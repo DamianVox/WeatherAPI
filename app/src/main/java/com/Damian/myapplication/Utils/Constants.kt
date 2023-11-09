@@ -13,7 +13,8 @@ object Constants {
     var dateArray:Array<String> = arrayOf()
     var tMaxArray:Array<String> = arrayOf()
     var tMinArray:Array<String> = arrayOf()
-    var rainArray:Array<String> = arrayOf()
+    var tWeatherCodeArray:Array<String> = arrayOf()
+    var tRainArray:Array<String> = arrayOf()
 
     //Maps
     var MAPS_API_KEY="AIzaSyAgH6oo14wxkg5VrWGwwneetnIhmzPBm_U"
