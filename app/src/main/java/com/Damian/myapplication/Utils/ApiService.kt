@@ -1,6 +1,5 @@
 package com.Damian.myapplication.Utils
 
-import com.Damian.myapplication.model.Daily
 import com.Damian.myapplication.model.Weather
 import retrofit2.Response
 import retrofit2.http.GET
