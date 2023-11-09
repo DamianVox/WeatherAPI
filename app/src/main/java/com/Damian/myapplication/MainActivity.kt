@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.Damian.myapplication.ViewModel.WeatherVM
 import com.Damian.myapplication.databinding.ActivityMainBinding
+import com.Damian.myapplication.model.Daily
+import com.Damian.myapplication.model.Weather
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +29,18 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.weatherLive.observe(this, Observer{
             Log.d("Output Body",it.body().toString())
+            Log.d("Output Daily Time", it.body()?.daily?.time.toString())
+
+            val dateStr = it.body()?.daily?.time.toString()
+// Remove the brackets and spaces from the string
+            val dateList = dateStr.replace("[", "").replace("]", "").replace(" ", "").split(",")
+// Convert the list of date strings into an array
+            val dateArray = dateList.toTypedArray()
+            for (date in dateArray) {
+                Log.d("Output Day Time", date)
+            }
             Log.d("Output",it.toString())
+
             //viewBinding.test.text = it?.temperature2MMax.toString()
         })
 
