@@ -27,15 +27,17 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent=".2"
             android:layout_height="wrap_content"
             android:text="Select Location"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".2" />
 
         <EditText
             android:id="@+id/editLat"
             android:layout_width="0dp"
+            android:inputType="numberDecimal"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent=".4"
             android:layout_height="wrap_content"
@@ -45,6 +47,7 @@
 
         <EditText
             android:id="@+id/editLong"
+            android:inputType="numberDecimal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Long"
@@ -90,8 +93,6 @@
             app:layout_constraintHeight_percent=".5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/space2">
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
