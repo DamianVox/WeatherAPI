@@ -6,6 +6,7 @@ import com.Damian.myapplication.Utils.Constants.tMaxArray
 import com.Damian.myapplication.Utils.Constants.tMinArray
 import com.Damian.myapplication.Utils.Constants.tRainArray
 import com.Damian.myapplication.Utils.Constants.tWeatherCodeArray
+import com.Damian.myapplication.Utils.Constants.tWeatherStatus
 
 class DataProcessor {
     fun processField(data: String, Name: String) {

@@ -5,10 +5,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.Damian.myapplication.Utils.Constants.DAILY_URL
@@ -19,6 +22,7 @@ import com.Damian.myapplication.Utils.Constants.tMaxArray
 import com.Damian.myapplication.Utils.Constants.tMinArray
 import com.Damian.myapplication.Utils.Constants.tRainArray
 import com.Damian.myapplication.Utils.Constants.tWeatherCodeArray
+import com.Damian.myapplication.Utils.Constants.tWeatherStatus
 import com.Damian.myapplication.Utils.DataProcessor
 import com.Damian.myapplication.ViewModel.WeatherVM
 import com.Damian.myapplication.databinding.ActivityMainBinding
@@ -103,43 +107,62 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
     }
+
+
 
      private suspend fun performResults() {
         Toast.makeText(this,"Please Wait", Toast.LENGTH_SHORT).show()
         delay(2000)
         Log.d("output results", "start ${dateArray[0].toString()},${tMaxArray[0].toString()},${tMinArray[0].toString()},${tWeatherCodeArray[0].toString()},${tRainArray[0].toString()}")
 
+         if (tWeatherCodeArray.size == 0 || tWeatherCodeArray.isEmpty()){
+             Toast.makeText(this, "There are no results to display.", Toast.LENGTH_SHORT).show()
+         } else{
+             tWeatherStatus = arrayOfNulls<String>(tWeatherCodeArray.size)
+             for (i in tWeatherCodeArray.indices) {
+                 when (tWeatherCodeArray[i]) {
+                     "3" -> tWeatherStatus[i] = " - Clouds generally forming or developing"
+                     "80" -> tWeatherStatus[i] = " - Rain shower(s), slight"
+                     "95" -> tWeatherStatus[i] = " - Thunderstorm, slight or moderate, without hail"
+                     // Add more cases as needed for other values in array1
+                     else -> tWeatherStatus[i] = " - unknown weather pattern"
+                 }
+             }
+         }
+
          if (unitVal =="C") {
              //Today
              viewBinding.txtTodayDate.text = "Today: " + dateArray[0]
              viewBinding.txtTodayMax.text = "Max Temp: " + tMaxArray[0] + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + tMinArray[0] + unitVal
-             viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0]
+             viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0] + tWeatherStatus[0]
              viewBinding.txtTodayRain.text = "Rain : " + tRainArray[0]
              //Day 2
              viewBinding.txt2Date.text = "Day 2: " + dateArray[1]
              viewBinding.txt2Max.text = "Max Temp: " + tMaxArray[1] + unitVal
              viewBinding.txt2Min.text = "Min Temp: " + tMinArray[1] + unitVal
-             viewBinding.txt2WeatherCode.text = "Weather Code: " + tWeatherCodeArray[1]
+             viewBinding.txt2WeatherCode.text = "Weather Code: " + tWeatherCodeArray[1] + tWeatherStatus[1]
              viewBinding.txt2Rain.text = "Rain : " + tRainArray[1]
              //Day 3
              viewBinding.txt3Date.text = "Day 3: " + dateArray[2]
              viewBinding.txt3Max.text = "Max Temp: " + tMaxArray[2] + unitVal
              viewBinding.txt3Min.text = "Min Temp: " + tMinArray[2] + unitVal
-             viewBinding.txt3WeatherCode.text = "Weather Code: " + tWeatherCodeArray[2]
+             viewBinding.txt3WeatherCode.text = "Weather Code: " + tWeatherCodeArray[2] + tWeatherStatus[2]
              viewBinding.txt3Rain.text = "Rain : " + tRainArray[2]
              //Day 4
              viewBinding.txt4Date.text = "Day 4: " + dateArray[3]
              viewBinding.txt4Max.text = "Max Temp: " + tMaxArray[3] + unitVal
              viewBinding.txt4Min.text = "Min Temp: " + tMinArray[3] + unitVal
-             viewBinding.txt4WeatherCode.text = "Weather Code: " + tWeatherCodeArray[3]
+             viewBinding.txt4WeatherCode.text = "Weather Code: " + tWeatherCodeArray[3] + tWeatherStatus[3]
              viewBinding.txt4Rain.text = "Rain : " + tRainArray[3]
              //Day 5
              viewBinding.txt5Date.text = "Day 5: " + dateArray[4]
              viewBinding.txt5Max.text = "Max Temp: " + tMaxArray[4] + unitVal
              viewBinding.txt5Min.text = "Min Temp: " + tMinArray[4] + unitVal
-             viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4]
+             viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4] + tWeatherStatus[4]
              viewBinding.txt5Rain.text = "Rain : " + tRainArray[4]
          }
          else {
@@ -147,31 +170,31 @@ class MainActivity : AppCompatActivity() {
              viewBinding.txtTodayDate.text = "Today: " + dateArray[0]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[0].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[0].toDouble()*9/5)+32).toString() + unitVal
-             viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0]
+             viewBinding.txtTodayWeatherCode.text = "Weather Code: " + tWeatherCodeArray[0] + tWeatherStatus[0]
              viewBinding.txtTodayRain.text = "Rain : " + tRainArray[0]
              //Day 2
              viewBinding.txt2Date.text = "Day 2: " + dateArray[1]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[1].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[1].toDouble()*9/5)+32).toString() + unitVal
-             viewBinding.txt2WeatherCode.text = "Weather Code: " + tWeatherCodeArray[1]
+             viewBinding.txt2WeatherCode.text = "Weather Code: " + tWeatherCodeArray[1] + tWeatherStatus[1]
              viewBinding.txt2Rain.text = "Rain : " + tRainArray[1]
              //Day 3
              viewBinding.txt3Date.text = "Day 3: " + dateArray[2]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[2].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[2].toDouble()*9/5)+32).toString() + unitVal
-             viewBinding.txt3WeatherCode.text = "Weather Code: " + tWeatherCodeArray[2]
+             viewBinding.txt3WeatherCode.text = "Weather Code: " + tWeatherCodeArray[2] + tWeatherStatus[2]
              viewBinding.txt3Rain.text = "Rain : " + tRainArray[2]
              //Day 4
              viewBinding.txt4Date.text = "Day 4: " + dateArray[3]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[3].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[3].toDouble()*9/5)+32).toString() + unitVal
-             viewBinding.txt4WeatherCode.text = "Weather Code: " + tWeatherCodeArray[3]
+             viewBinding.txt4WeatherCode.text = "Weather Code: " + tWeatherCodeArray[3] + tWeatherStatus[3]
              viewBinding.txt4Rain.text = "Rain : " + tRainArray[3]
              //Day 5
              viewBinding.txt5Date.text = "Day 5: " + dateArray[4]
              viewBinding.txtTodayMax.text = "Max Temp: " + ((tMaxArray[4].toDouble()*9/5)+32).toString() + unitVal
              viewBinding.txtTodayMin.text = "Min Temp: " + ((tMinArray[4].toDouble()*9/5)+32).toString() + unitVal
-             viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4]
+             viewBinding.txt5WeatherCode.text = "Weather Code: " + tWeatherCodeArray[4] + tWeatherStatus[4]
              viewBinding.txt5Rain.text = "Rain : " + tRainArray[4]
 
          }

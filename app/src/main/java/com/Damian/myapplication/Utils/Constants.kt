@@ -14,6 +14,7 @@ object Constants {
     var tMaxArray:Array<String> = arrayOf()
     var tMinArray:Array<String> = arrayOf()
     var tWeatherCodeArray:Array<String> = arrayOf()
+    var tWeatherStatus:Array<String?> = arrayOf()
     var tRainArray:Array<String> = arrayOf()
 
     //Maps
