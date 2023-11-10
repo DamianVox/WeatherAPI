@@ -53,7 +53,8 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_maps)
 
-    /*    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+    /*    Moved this to the main Activity, request permission on start up
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.ACCESS_FINE_LOCATION
@@ -86,6 +87,7 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
     }
 
     override fun onBackPressed() {
+        //trigger a back press activity, refresh the textfields on the main activity with the latest location information
         refreshContent()
         super.onBackPressed()
     }
@@ -143,11 +145,11 @@ class StartMapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListe
     }
 
     override fun onConnectionSuspended(p0: Int) {
-        TODO("Not yet implemented")
+        TODO("Not needed for this application currently")
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-        TODO("Not yet implemented")
+        TODO("Not needed for this application currently")
     }
 
     fun searchLocation(view: View){
