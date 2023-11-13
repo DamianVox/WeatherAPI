@@ -18,7 +18,7 @@ object Constants {
     var tWeatherStatus:Array<String?> = arrayOf()
     var tRainArray:Array<String> = arrayOf()
 
-    //Maps inf not used through the local properties to manifest
+    //If Maps info not used through the local properties to manifest
     var MAPS_API_KEY="AIzaSyAgH6oo14wxkg5VrWGwwneetnIhmzPBm_U"
 
 
